@@ -197,13 +197,13 @@ namespace TTS_generator
             // 
             qualityToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { TS_QualityLow, TS_QualityMedium, TS_QualityHigh });
             qualityToolStripMenuItem.Name = "qualityToolStripMenuItem";
-            qualityToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            qualityToolStripMenuItem.Text = "Quality";
+            qualityToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            qualityToolStripMenuItem.Text = "Export Quality";
             // 
             // TS_QualityLow
             // 
             TS_QualityLow.Name = "TS_QualityLow";
-            TS_QualityLow.Size = new System.Drawing.Size(119, 22);
+            TS_QualityLow.Size = new System.Drawing.Size(180, 22);
             TS_QualityLow.Tag = "1";
             TS_QualityLow.Text = "Low";
             TS_QualityLow.Click += AudioQuality_ToolStripMenuItem_Click;
@@ -211,7 +211,7 @@ namespace TTS_generator
             // TS_QualityMedium
             // 
             TS_QualityMedium.Name = "TS_QualityMedium";
-            TS_QualityMedium.Size = new System.Drawing.Size(119, 22);
+            TS_QualityMedium.Size = new System.Drawing.Size(180, 22);
             TS_QualityMedium.Tag = "2";
             TS_QualityMedium.Text = "Medium";
             TS_QualityMedium.Click += AudioQuality_ToolStripMenuItem_Click;
@@ -221,7 +221,7 @@ namespace TTS_generator
             TS_QualityHigh.Checked = true;
             TS_QualityHigh.CheckState = CheckState.Checked;
             TS_QualityHigh.Name = "TS_QualityHigh";
-            TS_QualityHigh.Size = new System.Drawing.Size(119, 22);
+            TS_QualityHigh.Size = new System.Drawing.Size(180, 22);
             TS_QualityHigh.Tag = "3";
             TS_QualityHigh.Text = "High";
             TS_QualityHigh.Click += AudioQuality_ToolStripMenuItem_Click;
