@@ -14,17 +14,14 @@ namespace TTS_generator
 {
     public class TtsSystem
     {
-        private SpeechSynthesizer _synth;
+        private SpeechSynthesizer? _synth;
         private SpeechAudioFormatInfo _formatInfoHigh, _formatInfoMedium, _formatInfoLow;
         private List<InstalledVoice> _allVoices;
         private InstalledVoice _selectedVoice;
         private VoiceQuality _selectedQuality;
-        public TtsSystem(VoiceQuality quality = VoiceQuality.HIGH)
+        private int _volume, _rate;
+        public TtsSystem(VoiceQuality quality = VoiceQuality.HIGH, int volume = 100, int rate = 0)
         {
-            CreateSynthIfNeeded();
-            _allVoices = new List<InstalledVoice>();
-            GetVoices();
-            _selectedQuality = quality;
             //sixteen bit. clearer, but larger files.
             _formatInfoHigh = new SpeechAudioFormatInfo(44100, AudioBitsPerSample.Sixteen, AudioChannel.Mono);
             _formatInfoMedium = new SpeechAudioFormatInfo(16000, AudioBitsPerSample.Sixteen, AudioChannel.Mono);
@@ -33,6 +30,12 @@ namespace TTS_generator
             //_formatInfoHigh = new SpeechAudioFormatInfo(44100, AudioBitsPerSample.Eight, AudioChannel.Mono);
             //_formatInfoMedium = new SpeechAudioFormatInfo(16000, AudioBitsPerSample.Eight, AudioChannel.Mono);
             //_formatInfoLow = new SpeechAudioFormatInfo(11025, AudioBitsPerSample.Eight, AudioChannel.Mono);
+            _volume = volume;
+            _rate = rate;
+            _selectedQuality = quality;
+            CreateSynthIfNeeded();
+            _allVoices = new List<InstalledVoice>();
+            GetVoices();
         }
 
         public void GetVoices()
@@ -132,6 +135,8 @@ namespace TTS_generator
             { return; }
             _synth = new SpeechSynthesizer();
             _synth.SetOutputToDefaultAudioDevice();
+            _synth.Rate = _rate;
+            _synth.Volume = _volume;
             InjectOneCoreVoices(_synth);
             _synth.StateChanged += _synth_StateChanged;
         }
@@ -159,13 +164,6 @@ namespace TTS_generator
                 _synth = null;
             }
         }
-
-        public SynthesizerState? CurrentState => _synth?.State;
-
-        public VoiceQuality Quality { get => _selectedQuality; set => _selectedQuality = value; }
-
-
-
         private void InjectOneCoreVoices(SpeechSynthesizer synthesizer)
         {
             //https://github.com/rampaa/JL/blob/master/JL.Windows/SpeechSynthesis/SpeechSynthesisReflectionUtils.cs
@@ -222,6 +220,13 @@ namespace TTS_generator
                 return target.GetType().GetField(propName, BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(target);
             }
         }
+
+
+        public SynthesizerState? CurrentState => _synth?.State;
+        public VoiceQuality Quality { get => _selectedQuality; set => _selectedQuality = value; }
+        public int Volume { get => _volume; set => _volume = value; }
+        public int Rate { get => _rate; set => _rate = value; }
+
     }
 
     public enum VoiceQuality

@@ -1,18 +1,14 @@
 using System.Windows.Forms;
-using TTS_generator.FormAddons;
 
 namespace TTS_generator
 {
     public partial class Form1 : Form
     {
         private TtsSystem _tts;
-        private ToolStripSpringComboBox TS_Voices;
         public Form1()
         {
             _tts = new TtsSystem();
             InitializeComponent();
-            AddComboBox();
-            menuStrip1.Items.Add(TS_Voices);
             SetTtsNames(false);
         }
 
@@ -51,9 +47,9 @@ namespace TTS_generator
         private void TS_Voices_SelectedIndexChanged(object? sender, System.EventArgs e)
         {
             _tts.Stop();
-            if (!_tts.TrySetVoice((string)TS_Voices.SelectedItem))
+            if (!_tts.TrySetVoice((string)CbB_SelectedVoice.SelectedItem))
             {
-                Alert($"could not set voice to \"{(string)TS_Voices.SelectedItem}\"", "error setting voice");
+                Alert($"could not set voice to \"{(string)CbB_SelectedVoice.SelectedItem}\"", "error setting voice");
             }
         }
 
@@ -69,18 +65,9 @@ namespace TTS_generator
         }
         #endregion
 
-
-        private void AddComboBox()
-        {
-            TS_Voices = new ToolStripSpringComboBox();
-            TS_Voices.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            TS_Voices.AutoCompleteSource = AutoCompleteSource.ListItems;
-            TS_Voices.SelectedIndexChanged += TS_Voices_SelectedIndexChanged;
-        }
-
         private void SetTtsNames(bool resetVoices)
         {
-            TS_Voices.Items.Clear();
+            CbB_SelectedVoice.Items.Clear();
             string[] names = _tts.GetVoiceNames(resetVoices);
             if (names.Length == 0)
             {
@@ -89,9 +76,10 @@ namespace TTS_generator
             }
             for (int i = 0; i < names.Length; i++)
             {
-                TS_Voices.Items.Add(names[i]);
+
+                CbB_SelectedVoice.Items.Add(names[i]);
             }
-            TS_Voices.SelectedIndex = 0;
+            CbB_SelectedVoice.SelectedIndex = 0;
         }
 
         private void Alert(string? message, string? title)
@@ -116,6 +104,18 @@ namespace TTS_generator
             TS_QualityMedium.Checked = false;
             TS_QualityHigh.Checked = false;
             item.Checked = true;
+        }
+
+        private void TrB_VoiceVolume_ValueChanged(object sender, System.EventArgs e)
+        {
+            LB_VoiceVolume.Text = TrB_VoiceVolume.Value.ToString();
+            _tts.Volume = TrB_VoiceVolume.Value;
+        }
+
+        private void TrB_VoiceRate_ValueChanged(object sender, System.EventArgs e)
+        {
+            LB_VoiceRate.Text = TrB_VoiceRate.Value.ToString();
+            _tts.Rate = TrB_VoiceRate.Value;
         }
     }
 }

@@ -6,7 +6,12 @@
     <RootNamespace>TTS_generator</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>ambient_generic.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ambient_generic.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Speech" Version="9.0.1" />
