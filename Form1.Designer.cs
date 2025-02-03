@@ -81,7 +81,7 @@ namespace TTS_generator
             BT_PlayAudio.Dock = DockStyle.Fill;
             BT_PlayAudio.Location = new System.Drawing.Point(0, 0);
             BT_PlayAudio.Name = "BT_PlayAudio";
-            BT_PlayAudio.Size = new System.Drawing.Size(121, 26);
+            BT_PlayAudio.Size = new System.Drawing.Size(119, 24);
             BT_PlayAudio.TabIndex = 1;
             BT_PlayAudio.Text = "Play.";
             BT_PlayAudio.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@ namespace TTS_generator
             BT_StopAudio.Dock = DockStyle.Fill;
             BT_StopAudio.Location = new System.Drawing.Point(0, 0);
             BT_StopAudio.Name = "BT_StopAudio";
-            BT_StopAudio.Size = new System.Drawing.Size(131, 26);
+            BT_StopAudio.Size = new System.Drawing.Size(129, 24);
             BT_StopAudio.TabIndex = 2;
             BT_StopAudio.Text = "Stop.";
             BT_StopAudio.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@ namespace TTS_generator
             BT_SaveAudio.FlatStyle = FlatStyle.System;
             BT_SaveAudio.Location = new System.Drawing.Point(0, 0);
             BT_SaveAudio.Name = "BT_SaveAudio";
-            BT_SaveAudio.Size = new System.Drawing.Size(258, 26);
+            BT_SaveAudio.Size = new System.Drawing.Size(256, 24);
             BT_SaveAudio.TabIndex = 3;
             BT_SaveAudio.Text = "Save Audio File...";
             BT_SaveAudio.UseVisualStyleBackColor = true;
@@ -121,7 +121,7 @@ namespace TTS_generator
             // 
             // splitContainer1
             // 
-            splitContainer1.BorderStyle = BorderStyle.FixedSingle;
+            splitContainer1.BorderStyle = BorderStyle.Fixed3D;
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.IsSplitterFixed = true;
             splitContainer1.Location = new System.Drawing.Point(0, 0);
@@ -141,7 +141,7 @@ namespace TTS_generator
             // splitContainer2
             // 
             splitContainer2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            splitContainer2.BorderStyle = BorderStyle.FixedSingle;
+            splitContainer2.BorderStyle = BorderStyle.Fixed3D;
             splitContainer2.IsSplitterFixed = true;
             splitContainer2.Location = new System.Drawing.Point(5, 24);
             splitContainer2.Name = "splitContainer2";
@@ -203,7 +203,7 @@ namespace TTS_generator
             // TS_QualityLow
             // 
             TS_QualityLow.Name = "TS_QualityLow";
-            TS_QualityLow.Size = new System.Drawing.Size(180, 22);
+            TS_QualityLow.Size = new System.Drawing.Size(119, 22);
             TS_QualityLow.Tag = "1";
             TS_QualityLow.Text = "Low";
             TS_QualityLow.Click += AudioQuality_ToolStripMenuItem_Click;
@@ -211,7 +211,7 @@ namespace TTS_generator
             // TS_QualityMedium
             // 
             TS_QualityMedium.Name = "TS_QualityMedium";
-            TS_QualityMedium.Size = new System.Drawing.Size(180, 22);
+            TS_QualityMedium.Size = new System.Drawing.Size(119, 22);
             TS_QualityMedium.Tag = "2";
             TS_QualityMedium.Text = "Medium";
             TS_QualityMedium.Click += AudioQuality_ToolStripMenuItem_Click;
@@ -221,7 +221,7 @@ namespace TTS_generator
             TS_QualityHigh.Checked = true;
             TS_QualityHigh.CheckState = CheckState.Checked;
             TS_QualityHigh.Name = "TS_QualityHigh";
-            TS_QualityHigh.Size = new System.Drawing.Size(180, 22);
+            TS_QualityHigh.Size = new System.Drawing.Size(119, 22);
             TS_QualityHigh.Tag = "3";
             TS_QualityHigh.Text = "High";
             TS_QualityHigh.Click += AudioQuality_ToolStripMenuItem_Click;
