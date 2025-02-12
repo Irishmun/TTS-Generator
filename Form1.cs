@@ -108,13 +108,14 @@ namespace TTS_generator
 
         private void TrB_VoiceVolume_ValueChanged(object sender, System.EventArgs e)
         {
-            LB_VoiceVolume.Text = TrB_VoiceVolume.Value.ToString();
+            GB_Volume.Text = "Volume: " + TrB_VoiceVolume.Value.ToString();
             _tts.Volume = TrB_VoiceVolume.Value;
         }
 
         private void TrB_VoiceRate_ValueChanged(object sender, System.EventArgs e)
         {
-            LB_VoiceRate.Text = TrB_VoiceRate.Value.ToString();
+            //LB_VoiceRate.Text = TrB_VoiceRate.Value.ToString();
+            GB_Rate.Text = "Rate: " + TrB_VoiceRate.Value.ToString();
             _tts.Rate = TrB_VoiceRate.Value;
         }
     }

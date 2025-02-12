@@ -48,13 +48,11 @@ namespace TTS_generator
             TS_QualityHigh = new ToolStripMenuItem();
             splitContainer3 = new SplitContainer();
             groupBox2 = new GroupBox();
-            LB_VoiceRate = new Label();
-            label4 = new Label();
+            GB_Rate = new GroupBox();
             TrB_VoiceRate = new TrackBar();
-            LB_VoiceVolume = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            GB_Volume = new GroupBox();
             TrB_VoiceVolume = new TrackBar();
+            groupBox3 = new GroupBox();
             CbB_SelectedVoice = new ComboBox();
             groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -71,8 +69,11 @@ namespace TTS_generator
             splitContainer3.Panel2.SuspendLayout();
             splitContainer3.SuspendLayout();
             groupBox2.SuspendLayout();
+            GB_Rate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TrB_VoiceRate).BeginInit();
+            GB_Volume.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TrB_VoiceVolume).BeginInit();
+            groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -112,10 +113,10 @@ namespace TTS_generator
             // 
             // RTB_Lines
             // 
-            RTB_Lines.Dock = DockStyle.Fill;
-            RTB_Lines.Location = new System.Drawing.Point(0, 0);
+            RTB_Lines.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            RTB_Lines.Location = new System.Drawing.Point(6, 6);
             RTB_Lines.Name = "RTB_Lines";
-            RTB_Lines.Size = new System.Drawing.Size(253, 253);
+            RTB_Lines.Size = new System.Drawing.Size(247, 313);
             RTB_Lines.TabIndex = 0;
             RTB_Lines.Text = "";
             // 
@@ -244,104 +245,86 @@ namespace TTS_generator
             splitContainer3.Panel2.Controls.Add(groupBox2);
             splitContainer3.Panel2.Controls.Add(groupBox1);
             splitContainer3.Panel2MinSize = 278;
-            splitContainer3.Size = new System.Drawing.Size(535, 253);
+            splitContainer3.Size = new System.Drawing.Size(535, 326);
             splitContainer3.SplitterDistance = 253;
             splitContainer3.TabIndex = 6;
             // 
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox2.Controls.Add(LB_VoiceRate);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(TrB_VoiceRate);
-            groupBox2.Controls.Add(LB_VoiceVolume);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(TrB_VoiceVolume);
-            groupBox2.Controls.Add(CbB_SelectedVoice);
+            groupBox2.Controls.Add(GB_Rate);
+            groupBox2.Controls.Add(GB_Volume);
+            groupBox2.Controls.Add(groupBox3);
             groupBox2.Location = new System.Drawing.Point(2, 6);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(270, 145);
+            groupBox2.Size = new System.Drawing.Size(270, 218);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "Settings";
             // 
-            // LB_VoiceRate
+            // GB_Rate
             // 
-            LB_VoiceRate.Location = new System.Drawing.Point(6, 110);
-            LB_VoiceRate.Name = "LB_VoiceRate";
-            LB_VoiceRate.Size = new System.Drawing.Size(50, 15);
-            LB_VoiceRate.TabIndex = 14;
-            LB_VoiceRate.Text = "0";
-            LB_VoiceRate.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(23, 95);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(33, 15);
-            label4.TabIndex = 13;
-            label4.Text = "Rate:";
+            GB_Rate.Controls.Add(TrB_VoiceRate);
+            GB_Rate.Location = new System.Drawing.Point(6, 146);
+            GB_Rate.Name = "GB_Rate";
+            GB_Rate.Size = new System.Drawing.Size(258, 66);
+            GB_Rate.TabIndex = 17;
+            GB_Rate.TabStop = false;
+            GB_Rate.Text = "Rate: 0";
             // 
             // TrB_VoiceRate
             // 
             TrB_VoiceRate.LargeChange = 1;
-            TrB_VoiceRate.Location = new System.Drawing.Point(62, 95);
+            TrB_VoiceRate.Location = new System.Drawing.Point(6, 14);
             TrB_VoiceRate.Minimum = -10;
             TrB_VoiceRate.Name = "TrB_VoiceRate";
-            TrB_VoiceRate.Size = new System.Drawing.Size(202, 45);
+            TrB_VoiceRate.Size = new System.Drawing.Size(246, 45);
             TrB_VoiceRate.TabIndex = 12;
             TrB_VoiceRate.TickStyle = TickStyle.Both;
             TrB_VoiceRate.ValueChanged += TrB_VoiceRate_ValueChanged;
             // 
-            // LB_VoiceVolume
+            // GB_Volume
             // 
-            LB_VoiceVolume.Location = new System.Drawing.Point(6, 66);
-            LB_VoiceVolume.Name = "LB_VoiceVolume";
-            LB_VoiceVolume.Size = new System.Drawing.Size(50, 15);
-            LB_VoiceVolume.TabIndex = 11;
-            LB_VoiceVolume.Text = "100";
-            LB_VoiceVolume.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(6, 51);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(50, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Volume:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(18, 25);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 15);
-            label1.TabIndex = 9;
-            label1.Text = "Voice:";
+            GB_Volume.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            GB_Volume.Controls.Add(TrB_VoiceVolume);
+            GB_Volume.Location = new System.Drawing.Point(6, 76);
+            GB_Volume.Name = "GB_Volume";
+            GB_Volume.Size = new System.Drawing.Size(258, 66);
+            GB_Volume.TabIndex = 16;
+            GB_Volume.TabStop = false;
+            GB_Volume.Text = "Volume: 100";
             // 
             // TrB_VoiceVolume
             // 
             TrB_VoiceVolume.LargeChange = 10;
-            TrB_VoiceVolume.Location = new System.Drawing.Point(62, 51);
+            TrB_VoiceVolume.Location = new System.Drawing.Point(6, 14);
             TrB_VoiceVolume.Maximum = 100;
             TrB_VoiceVolume.Name = "TrB_VoiceVolume";
-            TrB_VoiceVolume.Size = new System.Drawing.Size(202, 45);
+            TrB_VoiceVolume.Size = new System.Drawing.Size(246, 45);
             TrB_VoiceVolume.TabIndex = 7;
             TrB_VoiceVolume.TickStyle = TickStyle.Both;
             TrB_VoiceVolume.Value = 100;
             TrB_VoiceVolume.ValueChanged += TrB_VoiceVolume_ValueChanged;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox3.Controls.Add(CbB_SelectedVoice);
+            groupBox3.Location = new System.Drawing.Point(6, 20);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(258, 52);
+            groupBox3.TabIndex = 15;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Voice";
             // 
             // CbB_SelectedVoice
             // 
             CbB_SelectedVoice.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             CbB_SelectedVoice.AutoCompleteSource = AutoCompleteSource.ListItems;
             CbB_SelectedVoice.FormattingEnabled = true;
-            CbB_SelectedVoice.Location = new System.Drawing.Point(62, 22);
+            CbB_SelectedVoice.Location = new System.Drawing.Point(6, 22);
             CbB_SelectedVoice.Name = "CbB_SelectedVoice";
-            CbB_SelectedVoice.Size = new System.Drawing.Size(202, 23);
+            CbB_SelectedVoice.Size = new System.Drawing.Size(246, 23);
             CbB_SelectedVoice.TabIndex = 8;
             CbB_SelectedVoice.SelectedIndexChanged += TS_Voices_SelectedIndexChanged;
             // 
@@ -349,7 +332,7 @@ namespace TTS_generator
             // 
             groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(splitContainer2);
-            groupBox1.Location = new System.Drawing.Point(2, 156);
+            groupBox1.Location = new System.Drawing.Point(2, 229);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(270, 90);
             groupBox1.TabIndex = 6;
@@ -360,12 +343,12 @@ namespace TTS_generator
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(535, 277);
+            ClientSize = new System.Drawing.Size(535, 350);
             Controls.Add(splitContainer3);
             Controls.Add(menuStrip1);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            MinimumSize = new System.Drawing.Size(551, 316);
+            MinimumSize = new System.Drawing.Size(551, 389);
             Name = "Form1";
             Text = "Voice Synthesizer";
             splitContainer1.Panel1.ResumeLayout(false);
@@ -383,9 +366,13 @@ namespace TTS_generator
             ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
             splitContainer3.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            GB_Rate.ResumeLayout(false);
+            GB_Rate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TrB_VoiceRate).EndInit();
+            GB_Volume.ResumeLayout(false);
+            GB_Volume.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TrB_VoiceVolume).EndInit();
+            groupBox3.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -409,15 +396,13 @@ namespace TTS_generator
         private TrackBar TrB_VoiceVolume;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Label label1;
-        private Label label2;
-        private Label LB_VoiceVolume;
-        private Label LB_VoiceRate;
-        private Label label4;
         private TrackBar TrB_VoiceRate;
         private ToolStripMenuItem qualityToolStripMenuItem;
         private ToolStripMenuItem TS_QualityLow;
         private ToolStripMenuItem TS_QualityMedium;
         private ToolStripMenuItem TS_QualityHigh;
+        private GroupBox groupBox3;
+        private GroupBox GB_Volume;
+        private GroupBox GB_Rate;
     }
 }
