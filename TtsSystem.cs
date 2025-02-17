@@ -41,7 +41,10 @@ namespace TTS_generator
         public void GetVoices()
         {
             CreateSynthIfNeeded();
-            _allVoices = _synth.GetInstalledVoices().ToList();
+            //get all voices, sort by name, then by culture
+            _allVoices = _synth.GetInstalledVoices().OrderBy(x => x.VoiceInfo.Name).OrderBy(x => x.VoiceInfo.Culture.Name).ToList();
+            //remove duplicate names; some voices have a version that is "<name> Desktop" and a version that is "<name>"
+            _allVoices.RemoveAll(x => x.VoiceInfo.Name.EndsWith("Desktop"));
         }
 
         public string[] GetVoiceNames(bool resetVoices = false)
@@ -54,7 +57,7 @@ namespace TTS_generator
             string[] res = new string[_allVoices.Count];
             for (int i = 0; i < _allVoices.Count; i++)
             {
-                res[i] = _allVoices[i].VoiceInfo.Name;
+                res[i] = $"{_allVoices[i].VoiceInfo.Name} ({_allVoices[i].VoiceInfo.Culture})";
             }
             return res;
         }
@@ -63,6 +66,10 @@ namespace TTS_generator
         {
             if (string.IsNullOrWhiteSpace(name))
             { return false; }
+            if (name.EndsWith(')'))
+            {
+                name = name.Substring(0, name.LastIndexOf('(')).Trim();
+            }
             for (int i = 0; i < _allVoices.Count; i++)
             {
                 if (_allVoices[i].VoiceInfo.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
