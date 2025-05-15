@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 
 namespace TTS_generator
@@ -16,11 +17,22 @@ namespace TTS_generator
         {
             if (string.IsNullOrWhiteSpace(RTB_Lines.Text))
             { return; }
+            EnableDisableSettings(false);
             _tts.Speak(RTB_Lines.Text);
+            if (_tts.Synth != null)
+            {
+                _tts.Synth.SpeakCompleted += Synth_SpeakCompleted;
+            }
+        }
+
+        private void Synth_SpeakCompleted(object? sender, System.Speech.Synthesis.SpeakCompletedEventArgs e)
+        {
+            EnableDisableSettings(true);
         }
 
         private void BT_StopAudio_Click(object sender, System.EventArgs e)
         {
+            EnableDisableSettings(true);
             _tts.Stop();
         }
 
@@ -117,6 +129,14 @@ namespace TTS_generator
             //LB_VoiceRate.Text = TrB_VoiceRate.Value.ToString();
             GB_Rate.Text = "Rate: " + TrB_VoiceRate.Value.ToString();
             _tts.Rate = TrB_VoiceRate.Value;
+        }
+
+        private void EnableDisableSettings(bool enable)
+        {
+            RTB_Lines.Enabled = enable;
+            CbB_SelectedVoice.Enabled = enable;
+            TrB_VoiceVolume.Enabled = enable;
+            TrB_VoiceRate.Enabled = enable;
         }
     }
 }

@@ -233,7 +233,7 @@ namespace TTS_generator
         public VoiceQuality Quality { get => _selectedQuality; set => _selectedQuality = value; }
         public int Volume { get => _volume; set => _volume = value; }
         public int Rate { get => _rate; set => _rate = value; }
-
+        public SpeechSynthesizer? Synth { get => _synth; set => _synth = value; }
     }
 
     public enum VoiceQuality
